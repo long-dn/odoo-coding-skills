@@ -1,42 +1,22 @@
 {
   "name": "odoo-coding-skills",
-  "version": "0.2.0",
-  "description": "Version-aware AI coding rules packs (Odoo 19, etc.) for Claude, Cursor, GitHub Copilot, Cline, Windsurf, Aider, Continue.dev. Run via npx for interactive install.",
-  "bin": {
-    "odoo-coding-skills": "./installer/index.js"
-  },
-  "files": [
-    "dist",
-    "installer",
-    "README.md",
-    "LICENSE"
-  ],
+  "version": "0.3.0",
+  "description": "Standard SKILL.md agent skills for Odoo coding, installed with npx skills add.",
+  "private": true,
   "scripts": {
-    "build": "python scripts/build.py",
-    "list": "node installer/index.js --list",
-    "test": "node installer/index.js --help"
-  },
-  "engines": {
-    "node": ">=18"
-  },
-  "dependencies": {
-    "prompts": "^2.4.2"
+    "test": "npx skills add . --list"
   },
   "keywords": [
     "ai",
-    "llm",
-    "coding-rules",
-    "claude",
+    "agent-skills",
+    "skills",
+    "codex",
+    "gemini-cli",
+    "claude-code",
     "cursor",
-    "copilot",
-    "cline",
-    "windsurf",
-    "aider",
-    "continue",
+    "github-copilot",
     "odoo",
-    "odoo-19",
-    "anthropic-skill",
-    "rules"
+    "odoo-19"
   ],
   "author": "odoo-coding-skills contributors",
   "license": "MIT",

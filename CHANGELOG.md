@@ -1,31 +1,22 @@
 # Changelog
 
-Repo-level changes. For changes to individual skills, see each skill's own `CHANGELOG.md` under `skills/<n>/`.
+Repo-level changes. For changes to individual skills, see each skill's own `CHANGELOG.md` under `skills/<name>/`.
 
-## [0.2.0] — 2026-04
+## [0.3.0] - 2026-04
 
-### Added — `npx` installer
+### Changed
 
-Repo can now be published as an npm package; users install skills via `npx odoo-coding-skills`.
+- Switched installation to the standard `npx skills add ...` workflow only.
+- Removed the custom `npx odoo-coding-skills` installer.
+- Removed generated provider distributions under `dist/`.
+- Limited documented support to Codex, Gemini CLI, Claude Code, Cursor, and GitHub Copilot through the `skills` CLI agent ids.
 
-- Interactive CLI (`installer/index.js`) prompts for skill, provider, and target dir
-- Non-interactive mode via flags (`--skill`, `--provider`, `--target`, `--yes`)
-- Conflict detection: warns before overwriting existing files
-- Provider-specific post-install hints (Copilot settings, Aider command, etc.)
-- `--list` to enumerate available skills, `--help` for usage
-- GitHub Action `npm-publish.yml` to automate npm publish on release tags
-- Documentation: `docs/publishing.md`
+## [0.2.0] - 2026-04
 
-### Reorganized for multi-skill support
+### Added
 
-- `skill/` → `skills/<n>/` (each skill is a self-contained folder)
-- `dist/` → `dist/<n>/<provider>/` (per-skill output)
-- `evals/` moved into each skill's folder
-- Per-skill `README.md`, `CHANGELOG.md`, and optional `build.config.json`
-- New `scripts/new_skill.py` to scaffold skills
-- New `scripts/package_skill.py` (no external dependency on skill-creator)
-- Updated `scripts/build.py` to handle `--skill <n>` and `--list` flags
+- Initial npm-based installer and provider-specific generated distributions.
 
-## [0.1.0] — 2026-04
+## [0.1.0] - 2026-04
 
 Initial release with single skill `odoo19-syntax`.
