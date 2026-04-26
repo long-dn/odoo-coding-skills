@@ -1,0 +1,33 @@
+{
+  "_comment": "Skill-level overrides for scripts/build.py. Defines reference order, friendly titles, and per-domain globs for Cursor/Copilot scoped rules.",
+
+  "reference_order": [
+    "orm",
+    "views",
+    "controllers",
+    "owl_js",
+    "manifest_security",
+    "scss_assets",
+    "model_renames"
+  ],
+
+  "reference_titles": {
+    "orm": "ORM, Models, Fields & Methods",
+    "views": "XML Views (form, list, kanban, search)",
+    "controllers": "HTTP Controllers",
+    "owl_js": "OWL Components & JavaScript",
+    "manifest_security": "Manifest, Hooks & Security",
+    "scss_assets": "SCSS & Assets",
+    "model_renames": "Model & Field Renames"
+  },
+
+  "globs": {
+    "orm": ["**/models/**/*.py", "**/wizard/**/*.py", "**/wizards/**/*.py"],
+    "views": ["**/views/**/*.xml", "**/data/**/*.xml", "**/security/**/*.xml", "**/report/**/*.xml"],
+    "controllers": ["**/controllers/**/*.py"],
+    "owl_js": ["**/static/src/**/*.js", "**/static/src/**/*.xml"],
+    "manifest_security": ["**/__manifest__.py", "**/security/**", "**/__init__.py"],
+    "scss_assets": ["**/static/src/**/*.scss", "**/static/src/**/*.css"],
+    "model_renames": ["**/*.py", "**/*.xml"]
+  }
+}
