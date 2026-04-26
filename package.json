@@ -1,7 +1,7 @@
 {
-  "name": "odoo-coding-skills",
+  "name": "odoo-version-skills",
   "version": "0.3.0",
-  "description": "Standard SKILL.md agent skills for Odoo coding, installed with npx skills add.",
+  "description": "Version-aware Odoo SKILL.md agent skills, installed with npx skills add.",
   "private": true,
   "scripts": {
     "test": "npx skills add . --list"
@@ -18,14 +18,14 @@
     "odoo",
     "odoo-19"
   ],
-  "author": "odoo-coding-skills contributors",
+  "author": "odoo-version-skills contributors",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/long-dn/odoo-coding-skills.git"
+    "url": "git+https://github.com/long-dn/odoo-version-skills.git"
   },
   "bugs": {
-    "url": "https://github.com/long-dn/odoo-coding-skills/issues"
+    "url": "https://github.com/long-dn/odoo-version-skills/issues"
   },
-  "homepage": "https://github.com/long-dn/odoo-coding-skills#readme"
+  "homepage": "https://github.com/long-dn/odoo-version-skills#readme"
 }
