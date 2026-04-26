@@ -42,10 +42,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/<owner>/odoo-coding-skills.git"
+    "url": "git+https://github.com/long-dn/odoo-coding-skills.git"
   },
   "bugs": {
-    "url": "https://github.com/<owner>/odoo-coding-skills/issues"
+    "url": "https://github.com/long-dn/odoo-coding-skills/issues"
   },
-  "homepage": "https://github.com/<owner>/odoo-coding-skills#readme"
+  "homepage": "https://github.com/long-dn/odoo-coding-skills#readme"
 }
