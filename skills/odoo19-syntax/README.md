@@ -26,6 +26,8 @@ Install with the standard `skills` CLI:
 npx skills add long-dn/odoo-coding-skills --skill odoo19-syntax
 ```
 
+Odoo version is selected by skill name. This skill is for Odoo 19 only. If this repo adds other Odoo versions later, install the matching skill name, for example `odoo18-syntax` or `odoo20-syntax`.
+
 Install for a specific supported agent:
 
 ```bash

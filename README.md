@@ -6,11 +6,19 @@ This repository is installed with the open `skills` CLI only. It does not ship a
 
 ## Install
 
-Install the Odoo 19 syntax skill into the current project:
+Install by Odoo version. The Odoo version is selected through the skill name:
+
+| Odoo version | Skill name | Install command |
+|---|---|---|
+| 19 | `odoo19-syntax` | `npx skills add long-dn/odoo-coding-skills --skill odoo19-syntax` |
+
+For example, install the Odoo 19 syntax skill into the current project:
 
 ```bash
 npx skills add long-dn/odoo-coding-skills --skill odoo19-syntax
 ```
+
+The `skills` CLI does not support custom repository flags like `--odoo-version 19`, so each Odoo version should be published as its own skill, for example `odoo18-syntax`, `odoo19-syntax`, and later `odoo20-syntax`.
 
 Install it globally for your user:
 
