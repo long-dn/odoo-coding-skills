@@ -9,7 +9,7 @@ This reference covers OWL 2 components, services, and the modern JS architecture
 4. No `class`/`style` auto-forwarding to root element
 5. `t-on` callbacks → prefer prop callbacks
 6. Patching components (`patch` from `@web/core/utils/patch`)
-7. RPC calls — use the `rpc` service
+7. RPC calls — import plain `rpc`
 8. Services and `useService`
 9. Registry and component registration
 10. Removed jQuery & legacy widgets
@@ -172,22 +172,18 @@ Notes:
 - `patch` mutates the prototype; use it sparingly for core components.
 - The third argument (legacy `{...}` options object) is removed in modern Odoo — just pass two args: target and patch object.
 
-## 7. RPC calls — `rpc` service
+## 7. RPC calls — plain `rpc` function
 
-Don't use raw `fetch` for Odoo backend calls. Use the `rpc` service:
+Don't use raw `fetch` for Odoo backend calls. In Odoo 19, `rpc` is exported as a plain function from `@web/core/network/rpc`; it is not a service and must not be requested with `useService("rpc")`.
 
 ```javascript
 /** @odoo-module **/
 import { Component } from "@odoo/owl";
-import { useService } from "@web/core/utils/hooks";
+import { rpc } from "@web/core/network/rpc";
 
 export class MyComponent extends Component {
-    setup() {
-        this.rpc = useService("rpc");
-    }
-
     async loadData() {
-        const result = await this.rpc("/my_module/get_data", {
+        const result = await rpc("/my_module/get_data", {
             ids: [1, 2, 3],
         });
         return result;
@@ -207,7 +203,6 @@ const records = await this.orm.searchRead("res.partner", [["is_company", "=", tr
 ## 8. Services and `useService`
 
 Common services (request via `useService("name")`):
-- `"rpc"` — JSON-RPC calls to controllers.
 - `"orm"` — ORM operations (search, read, create, write, unlink, call).
 - `"notification"` — show toast notifications.
 - `"dialog"` — open a dialog.
@@ -243,14 +238,14 @@ Register custom widgets, fields, services via the central `registry`:
 
 ```javascript
 import { registry } from "@web/core/registry";
+import { rpc } from "@web/core/network/rpc";
 
 // Register a field widget
 registry.category("fields").add("my_widget", { component: MyWidget });
 
 // Register a service
 registry.category("services").add("myService", {
-    dependencies: ["rpc"],
-    start(env, { rpc }) {
+    start() {
         return { doThing: () => rpc("/my/route", {}) };
     },
 });

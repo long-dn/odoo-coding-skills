@@ -2,7 +2,7 @@
 
 ## User Prompt
 
-I'm building an Odoo 19 module. I need a controller endpoint `/library/book/search` that takes a `query` string, searches `library.book` records by name, and returns a list of `{id, name, isbn}`. The endpoint will be called from an OWL component in the backend using the rpc service.
+I'm building an Odoo 19 module. I need a controller endpoint `/library/book/search` that takes a `query` string, searches `library.book` records by name, and returns a list of `{id, name, isbn}`. The endpoint will be called from an OWL component in the backend using the plain `rpc` function.
 
 Also write the OWL component code that calls it (just the relevant `setup()` and a `searchBooks(query)` method).
 
@@ -14,8 +14,8 @@ Also write the OWL component code that calls it (just the relevant `setup()` and
 
 - Controller uses `type='jsonrpc'` (not `type='json'`), since web client RPC.
 - Controller imports: `from odoo import http; from odoo.http import request`.
-- OWL component uses the `rpc` service via `useService("rpc")`.
-- OWL imports from `@odoo/owl` and `@web/core/utils/hooks`.
+- OWL component imports `rpc` from `@web/core/network/rpc`.
+- OWL does not request RPC via `useService("rpc")`.
 - `/** @odoo-module **/` directive on the JS file.
 
 ## Expected output
@@ -23,10 +23,11 @@ Also write the OWL component code that calls it (just the relevant `setup()` and
 Two files (or two code blocks):
 
 1. Python controller with `@http.route('/library/book/search', type='jsonrpc', auth='user')`.
-2. OWL component with `setup()` getting `useService("rpc")` and `searchBooks` calling `this.rpc('/library/book/search', { query })`.
+2. OWL component with `searchBooks` calling `rpc('/library/book/search', { query })`.
 
 ## Anti-patterns to flag
 
 - `type='json'` for a web-client-called endpoint.
-- Using `fetch` directly instead of the `rpc` service.
+- Using `fetch` directly instead of `rpc`.
+- Importing `useService` only to call `useService("rpc")`.
 - jQuery `$.ajax` (legacy, gone in Odoo 17+).

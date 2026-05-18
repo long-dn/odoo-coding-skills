@@ -12,7 +12,7 @@ This reference covers HTTP controllers, route types, and authentication.
 
 ## 1. `type="json"` vs `type="jsonrpc"`
 
-Odoo 17 split JSON endpoints into two types and renamed the JSON-RPC variant. Odoo 19 keeps this distinction. The Odoo web client (calls from JS via `rpc` service) uses **JSON-RPC 2.0** — endpoints called by the web client must declare `type="jsonrpc"`.
+Odoo 17 split JSON endpoints into two types and renamed the JSON-RPC variant. Odoo 19 keeps this distinction. The Odoo web client (calls from JS via the plain `rpc` function from `@web/core/network/rpc`) uses **JSON-RPC 2.0** — endpoints called by the web client must declare `type="jsonrpc"`.
 
 ```python
 # ❌ OLD — works for plain JSON only, web client RPC will fail
@@ -20,7 +20,7 @@ Odoo 17 split JSON endpoints into two types and renamed the JSON-RPC variant. Od
 def get_data(self, **kwargs):
     return {'data': request.env['my.model'].search([]).read(['name'])}
 
-# ✅ Odoo 19 — for endpoints called by the Odoo web client (JS rpc service)
+# ✅ Odoo 19 — for endpoints called by the Odoo web client (JS rpc function)
 @http.route('/my_module/get_data', type='jsonrpc', auth='user')
 def get_data(self, **kwargs):
     return {'data': request.env['my.model'].search([]).read(['name'])}
@@ -51,7 +51,7 @@ The token is sent as `Authorization: Bearer <token>` header. Configure tokens vi
 | `type` | When to use |
 |---|---|
 | `http` | Plain HTTP endpoints returning HTML, files, redirects. Public pages, file downloads. |
-| `jsonrpc` | Endpoints called by the Odoo web client via the `rpc` service. JSON-RPC 2.0 protocol. |
+| `jsonrpc` | Endpoints called by the Odoo web client via the `rpc` function. JSON-RPC 2.0 protocol. |
 | `json` | Plain JSON request/response (POST with JSON body, get JSON back) — for non-Odoo callers that don't speak JSON-RPC. |
 
 Examples:

@@ -11,7 +11,7 @@ Seven domains:
 - **ORM** — `models.Constraint`, `Command`, `_compute_display_name`, `_read_group` / `formatted_read_group`, `Markup`, `Domain.OR` and `any` / `not any` operators, `env.tz` / `env.company` / `env.companies`, deprecated `_cr` / `_context` / `_uid`, `@api.private` (new), `@api.returns` (removed).
 - **Views** — `attrs` and `states` removed, `<tree>` → `<list>`, kanban `card` template, `t-raw` and `t-esc` both removed (use `t-out`), `t-call` attribute syntax, `<chatter/>` shorthand, search-view `<group>` cannot have `string` or `expand`.
 - **Controllers** — `type='jsonrpc'` for web-client RPC, `auth='bearer'` for tokens.
-- **OWL & JS** — OWL 2 patterns, `useService`, `useSubEnv`, `patch`, `useSortable`, POS `getOrder()` (camelCase), `request.cart` / `request.pricelist`, CSP rules.
+- **OWL & JS** — OWL 2 patterns, plain `rpc` import from `@web/core/network/rpc`, `useService`, `useSubEnv`, `patch`, `useSortable`, POS `getOrder()` (camelCase), `request.cart` / `request.pricelist`, CSP rules.
 - **Manifest, hooks, security** — `license` mandatory, `post_init_hook(env)` signature, `groups_id` → `group_ids`, `res.groups.privilege`, `xmlrpc_port` → `http_port`, demo data not loaded by default.
 - **SCSS** — dart-sass, `math.div(...)`, `@use` / `@forward`.
 - **Model & field renames** — full table of the 130 model renames + 51 field renames + removed models/fields. The category most likely to silently break LLM-generated code.
@@ -50,7 +50,7 @@ Supported agent ids:
 
 1. SQL constraints (`models.Constraint` pattern)
 2. View migration (`attrs`/`states`/`tree` removal)
-3. HTTP controllers + OWL components (jsonrpc + rpc service)
+3. HTTP controllers + OWL components (jsonrpc + plain rpc function)
 4. Model rename trap (`hr.contract` → `hr.version`)
 5. **Version check on Odoo 17 project** (must skip the skill)
 6. Command objects for O2M/M2M

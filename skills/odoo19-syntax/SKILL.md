@@ -167,6 +167,7 @@ For model name questions (e.g., "is the model still `hr.contract`?"), `reference
    - `product.template.sale_line_warn`
 
    *OWL/JS specific:*
+   - `useService("rpc")` or `import { useService } ...` only for RPC → import `{ rpc }` from `@web/core/network/rpc` instead
    - `this.pos.get_order()` → `this.pos.getOrder()` (camelCase)
    - `request.website.sale_get_order()` → `request.cart`
    - `request.website.pricelist_id` → `request.pricelist`

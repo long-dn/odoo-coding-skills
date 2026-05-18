@@ -2,6 +2,11 @@
 
 This file tracks changes to the odoo19-syntax skill specifically. For repo-level changes (build script, infrastructure, etc.), see the top-level `CHANGELOG.md`.
 
+## [Unreleased]
+
+- Corrected Odoo 19 OWL RPC guidance: `rpc` is a plain function imported from
+  `@web/core/network/rpc`, not a service requested with `useService("rpc")`.
+
 ## [0.1.0] — 2026-04
 
 Initial release.
